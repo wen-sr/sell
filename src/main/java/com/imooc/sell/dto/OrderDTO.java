@@ -1,11 +1,14 @@
 package com.imooc.sell.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.imooc.sell.dataobject.OrderDetail;
 import com.imooc.sell.enums.OrderStatus;
 import com.imooc.sell.enums.PayStatus;
 import lombok.Data;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +18,7 @@ import java.util.List;
  * Date: 2017-09-08  15:23
  */
 @Data
+//@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderDTO {
 
     private String orderId;
@@ -28,5 +32,5 @@ public class OrderDTO {
     private Date createTime;
     private Date updateTime;
 
-    private List<OrderDetail> orderDetailList;
+    private List<OrderDetail> orderDetailList = new ArrayList<>();
 }

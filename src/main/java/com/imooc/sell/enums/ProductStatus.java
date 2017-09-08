@@ -12,8 +12,6 @@ public enum ProductStatus {
 
     UP(0, "在架"),
     DOWN(1, "下架"),
-    PRODUCT_NOT_EXIST(10, "商品不存在"),
-    PRODUCT_STOCK_NOT_ENOUGH(20, "商品库存足")
     ;
 
 
