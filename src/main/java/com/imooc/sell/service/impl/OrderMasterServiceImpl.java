@@ -1,5 +1,6 @@
 package com.imooc.sell.service.impl;
 
+import com.imooc.sell.convert.PageOrderMastr2PageOrderDTO;
 import com.imooc.sell.dao.OrderDetailDao;
 import com.imooc.sell.dao.OrderMasterDao;
 import com.imooc.sell.dao.ProductInfoDao;
@@ -118,17 +119,13 @@ public class OrderMasterServiceImpl implements OrderMasterService {
     @Override
     public Page<OrderDTO> findList(String buyerOpenid, Pageable pageable) {
         Page<OrderMaster> orderMasterPage = orderMasterDao.findByBuyerOpenid(buyerOpenid, pageable);
-        List<OrderMaster> orderMasterList = orderMasterPage.getContent();
-        List<OrderDTO> orderDTOList = new ArrayList<>();
-        for (OrderMaster om : orderMasterList) {
-            OrderDTO o = new OrderDTO();
-            BeanUtils.copyProperties(om, o);
-            orderDTOList.add(o);
-        }
-//        BeanUtils.copyProperties(orderMasterList, orderDTOList);
+        return PageOrderMastr2PageOrderDTO.getPageOrderDTO(orderMasterPage, pageable);
+    }
 
-        Page<OrderDTO> orderDTOpage = new PageImpl<>(orderDTOList, pageable, orderMasterPage.getTotalElements());
-        return orderDTOpage;
+    @Override
+    public Page<OrderDTO> findList(Pageable pageable) {
+       Page<OrderMaster> orderMasterPage = orderMasterDao.findAll(pageable);
+        return PageOrderMastr2PageOrderDTO.getPageOrderDTO(orderMasterPage, pageable);
     }
 
     @Override

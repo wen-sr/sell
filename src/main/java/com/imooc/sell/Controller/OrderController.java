@@ -11,7 +11,6 @@ import com.imooc.sell.form.OrderForm;
 import com.imooc.sell.service.BuyerService;
 import com.imooc.sell.service.OrderMasterService;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.validator.internal.xml.GetterType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -71,7 +70,7 @@ public class OrderController {
         return ServerResponse.createBySuccess("成功", map);
     }
 //    订单列表
-    @PostMapping("/list")
+    @RequestMapping("/list")
     public ServerResponse<List<OrderDTO>> list(@RequestParam("openid") String openid,
                                                @RequestParam(value = "page", defaultValue = "0") int page,
                                                @RequestParam(value = "size", defaultValue = "3") int size){

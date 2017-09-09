@@ -35,7 +35,7 @@ public class BuyerProductInfoController {
      * 查询所有上架商品
      * @return
      */
-    @PostMapping("/list")
+    @RequestMapping("/list")
     public ServerResponse<List<ProductVo>> list(){
         //在架商品列表信息
         List<ProductInfo> productInfos = productService.findUpAll();

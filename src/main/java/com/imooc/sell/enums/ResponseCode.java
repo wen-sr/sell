@@ -20,7 +20,8 @@ public enum ResponseCode {
     ORDER_NOT_EXISTS(15, "订单不存在"),
     ORDER_PAY_STATUS_ERROR(16, "订单状态不正确"),
     PARAM_ERROR(17, "参数不正确"),
-    ORDER_OWNER_ERROR(18, "该订单不属于你")
+    ORDER_OWNER_ERROR(18, "该订单不属于你"),
+    WECHAT_ERROR(19, "微信错误")
     ;
 
     private final int code;
