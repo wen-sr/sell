@@ -50,7 +50,7 @@ public class WeChatController {
             log.error("【微信网页授权】 失败", e);
             throw new SellException(ResponseCode.WECHAT_ERROR);
         }
-        String openId = wxMpOAuth2AccessToken.getOpenId();
+         String openId = wxMpOAuth2AccessToken.getOpenId();
         System.out.println(openId);
         return "redirect:" + returnUrl + "?openid=" + openId;
     }
